@@ -1,0 +1,250 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;color:white;overflow:hidden;background:black}
+body::before{
+    content:'';
+
+    position:fixed;
+    inset:0;
+
+    background:url('stars.gif')
+    center/cover no-repeat;
+
+    opacity:.45;
+
+    z-index:-2;
+}
+body::after{
+
+    content:'';
+
+    position:fixed;
+
+    inset:0;
+
+    background:black;
+
+    opacity:.65;
+
+    z-index:-1;
+}
+.screen{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;flex-direction:column}
+.hidden{display:none!important}
+button{cursor:pointer;border:none;border-radius:999px;padding:14px 28px}
+#meBtn,#galleryBtn,#reasonsBtn,#continueBtn{background:#ff2d6f;color:white}
+#notMeBtn{background:white}
+.typewriterBox{max-width:700px;text-align:center;padding:20px}
+#petals{
+    position:absolute;
+    inset:0;
+    z-index:1;
+}
+
+#heartContainer{
+    position:absolute;
+    inset:0;
+    z-index:2;
+}
+.centerContent{
+    z-index:3;
+}
+.petal{position:absolute;pointer-events:none;animation:fall linear infinite}
+@keyframes fall{0%{transform:translateY(-100px) rotate(0)}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
+.heart-word{position:absolute;color:#ff2d6f;font-weight:bold;text-shadow:0 0 8px #ff2d6f,0 0 15px #ff2d6f;opacity:0;transform:scale(.3);animation:pulseWord 4s infinite}
+@keyframes pulseWord{0%{opacity:0;transform:scale(.3)}25%{opacity:1;transform:scale(1.4)}50%{opacity:1;text-shadow:0 0 15px #ff2d6f,0 0 30px #ff2d6f}100%{opacity:0;transform:scale(2)}}
+.centerContent{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index:10;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    align-items:center;
+}
+#galleryBtn{animation:floatButton 3s ease-in-out infinite}
+@keyframes floatButton{50%{transform:translateY(-10px)}}
+.modal{
+    position:fixed;
+    inset:0;
+
+    z-index:9999;
+
+    background:rgba(0,0,0,.6);
+
+    backdrop-filter:blur(15px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.modalContent{
+
+    width:95vw;
+
+    max-width:900px;
+
+    max-height:85vh;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:rgba(80,80,80,.5);
+
+    backdrop-filter:blur(10px);
+
+    margin:auto;
+
+}
+#galleryGrid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(140px,1fr));
+
+    gap:15px;
+
+}
+.polaroid{background:white;padding:10px 10px 40px;border-radius:3px}
+.polaroid img{width:100%;height:250px;object-fit:cover}
+.viewerContent img{max-width:90vw;max-height:90vh}
+.footer{position:absolute;bottom:15px}
+#secretBtn{text-align:center;margin-top:20px;cursor:pointer}
+
+@media (max-width: 768px){
+
+    h1{
+        font-size:1.8rem;
+        text-align:center;
+        padding:0 20px;
+    }
+
+    .btns{
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    button{
+        width:250px;
+        max-width:80vw;
+    }
+
+    .typewriterBox{
+        width:90%;
+        font-size:1rem;
+    }
+
+    #galleryBtn,
+    #reasonsBtn{
+        width:280px;
+        max-width:85vw;
+        font-size:1rem;
+    }
+
+    .heart-word{
+        font-size:10px;
+    }
+
+    .modalContent{
+        width:95%;
+        max-height:85vh;
+        padding:15px;
+    }
+
+    .polaroid img{
+        height:200px;
+    }
+
+    .footer{
+        font-size:.8rem;
+        text-align:center;
+        padding:0 10px;
+    }
+
+}
+
+/* =======================================
+   VERY SMALL PHONES
+======================================= */
+
+@media (max-width: 480px){
+
+    h1{
+        font-size:1.5rem;
+    }
+
+    .typewriterBox{
+        font-size:.95rem;
+    }
+
+    #galleryBtn,
+    #reasonsBtn{
+        width:90%;
+        font-size:.95rem;
+    }
+
+    .heart-word{
+        font-size:8px;
+    }
+
+    .polaroid img{
+        height:180px;
+    }
+
+}
+@media (max-width:768px){
+
+    .modal{
+
+        padding:10px;
+
+    }
+
+    .modalContent{
+
+        width:100%;
+
+        max-width:none;
+
+        max-height:85vh;
+
+        margin:0 auto;
+
+    }
+
+}
+@media (max-width:768px){
+
+    #galleryGrid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+.reasonsList{
+
+    padding-left:20px;
+
+    word-wrap:break-word;
+
+    overflow-wrap:break-word;
+
+}
